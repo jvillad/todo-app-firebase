@@ -1,22 +1,30 @@
 import { useState } from 'react';
-function Task() {
+import Task from './Task';
+function CreateTask() {
+  const [tasks, setTasks] = useState([]);
   const [userTask, setUserTask] = useState('');
-  const [theTask, setTheTask] = useState('');
 
   const addTask = () => {
-    setUserTask(theTask);
+    const newTask = {
+      id: Date.now(),
+      theTask: userTask,
+      status: 'not-done',
+    };
+    setTasks([...tasks, newTask]);
   };
-  const taskHandler = (ev) => {
-    setTheTask(ev.target.value);
+  const handleUserTask = (ev) => {
+    setUserTask(ev.target.value);
   };
 
   return (
     <div className="task">
-      <input type="text" onChange={taskHandler} />
+      <input type="text" onChange={handleUserTask} />
       <button onClick={addTask}>Add</button>
-      {userTask !== '' && <p>{userTask}</p>}
+      {tasks.map((task) => (
+        <Task key={task.id} newTask={task.theTask} status={task.status} />
+      ))}
     </div>
   );
 }
 
-export default Task;
+export default CreateTask;

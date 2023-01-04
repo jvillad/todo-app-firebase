@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../config/firebase';
-import DisplayTask from './DisplayTask';
-import { fetchTodos } from '../helper/fetchTodos';
+import RenderTask from './RenderTask';
+import { fetchTodos } from '../helper/fetchToDo';
 
 function CreateTask() {
   const [userTask, setUserTask] = useState('');
@@ -30,7 +30,13 @@ function CreateTask() {
       <input type="text" onChange={handleUserTask} />
       <button onClick={addToDb}>Add</button>
       {tasks.map((task) => (
-        <DisplayTask key={task.id} newTask={task.task} status={task.status} />
+        <RenderTask
+          key={task.id}
+          id={task.id}
+          date={task.date}
+          newTask={task.task}
+          status={task.status}
+        />
       ))}
     </div>
   );

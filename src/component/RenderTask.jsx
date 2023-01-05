@@ -13,7 +13,7 @@ function Task(todos) {
     removeToDo(todos.id);
   };
 
-  const saveTask = () => {
+  const setTaskComplete = () => {
     completeToDo(todos);
   };
 
@@ -25,14 +25,26 @@ function Task(todos) {
   };
 
   return (
-    <div className="todos">
-      <ul>
-        <input type="checkbox" onClick={saveTask} />
-        <li className="todo-task">{todos.newTask}</li>
-        <button onClick={deleteTask}>{<AiOutlineDelete />}</button>
-        <button onClick={onEdit}>{<AiOutlineEdit />}</button>
+    <div className="todo-container">
+      <ul className="todos">
+        <li className="todo-task">
+          <input className="done" type="checkbox" onClick={setTaskComplete} />
+          <div className="task">{todos.newTask}</div>
+          <button className="delete" onClick={deleteTask}>
+            {<AiOutlineDelete />}
+          </button>
+          <button className="edit" onClick={onEdit}>
+            {<AiOutlineEdit />}
+          </button>
+        </li>
+
         {showComponent && (
-          <EditTask task={taskToEdit} editMode={showComponent} />
+          <EditTask
+            task={taskToEdit}
+            editMode={showComponent}
+            docId={todos.id}
+            onChange={setShowComponent}
+          />
         )}
       </ul>
     </div>

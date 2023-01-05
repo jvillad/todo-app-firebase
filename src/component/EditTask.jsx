@@ -1,6 +1,6 @@
 import { AiOutlineSave } from 'react-icons/ai';
 import { useState, useEffect } from 'react';
-import { completeToDo } from '../helper/completeToDo';
+import { updateToDo } from '../helper/updateToDo';
 
 function EditTask(todo) {
   const [val, setVal] = useState(todo.task);
@@ -24,7 +24,7 @@ function EditTask(todo) {
     setVal(ev.target.value);
   };
   const updateTask = () => {
-    completeToDo(todoData);
+    updateToDo(todoData);
     todo.onChange(false);
   };
 

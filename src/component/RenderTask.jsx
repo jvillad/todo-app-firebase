@@ -2,7 +2,7 @@ import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
 import { useState } from 'react';
-import { completeToDo } from '../helper/completeToDo';
+import { updateToDo } from '../helper/updateToDo';
 import { removeToDo } from '../helper/removeToDo';
 import EditTask from './EditTask';
 
@@ -14,7 +14,7 @@ function Task(todos) {
   };
 
   const setTaskComplete = () => {
-    completeToDo(todos);
+    updateToDo(todos);
   };
 
   const onEdit = async () => {

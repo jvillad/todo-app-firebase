@@ -1,7 +1,7 @@
 import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../config/firebase';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { updateToDo } from '../helper/updateToDo';
 import { removeToDo } from '../helper/removeToDo';
 import EditTask from './EditTask';
@@ -9,6 +9,7 @@ import EditTask from './EditTask';
 function Task(todos) {
   const [showComponent, setShowComponent] = useState(false);
   const [taskToEdit, setTaskToEdit] = useState('');
+  const inputRef = useRef(null);
   const deleteTask = () => {
     removeToDo(todos.id);
   };
@@ -24,19 +25,25 @@ function Task(todos) {
     setTaskToEdit(todoSnap.data().task);
   };
 
+  useEffect(() => {
+    showComponent && inputRef.current.focus();
+  }, [showComponent]);
+
   return (
     <div className="todo-container">
       <ul className="todos">
-        <li className="todo-task">
-          <input className="done" type="checkbox" onClick={setTaskComplete} />
-          <div className="task">{todos.newTask}</div>
-          <button className="delete" onClick={deleteTask}>
-            {<AiOutlineDelete />}
-          </button>
-          <button className="edit" onClick={onEdit}>
-            {<AiOutlineEdit />}
-          </button>
-        </li>
+        {!showComponent && (
+          <li className="todo-task">
+            <input className="done" type="checkbox" onClick={setTaskComplete} />
+            <div className="task">{todos.newTask}</div>
+            <button className="delete" onClick={deleteTask}>
+              {<AiOutlineDelete />}
+            </button>
+            <button className="edit" onClick={onEdit}>
+              {<AiOutlineEdit />}
+            </button>
+          </li>
+        )}
 
         {showComponent && (
           <EditTask
@@ -44,6 +51,7 @@ function Task(todos) {
             editMode={showComponent}
             docId={todos.id}
             onChange={setShowComponent}
+            inputRef={inputRef}
           />
         )}
       </ul>

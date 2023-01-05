@@ -1,20 +1,39 @@
 import { AiOutlineSave } from 'react-icons/ai';
 import { useState, useEffect } from 'react';
-function EditTask(task) {
-  //   const theTask = task.task;
-  const [val, setVal] = useState(task.task);
+import { completeToDo } from '../helper/completeToDo';
+
+function EditTask(todo) {
+  const [val, setVal] = useState(todo.task);
+  const [todoData, setTodoData] = useState({});
+  // to update the correct value of state variable
   useEffect(() => {
-    setVal(task.task);
-  }, [task.task]);
+    setTodoData((prevState) => ({
+      ...prevState,
+      id: todo.docId,
+      updatedTask: val,
+      editMode: true,
+    }));
+  }, [val]);
+
+  // to update the correct value of state variable
+  useEffect(() => {
+    setVal(todo.task);
+  }, [todo.task]);
+
   const handleChange = (ev) => {
     setVal(ev.target.value);
-    console.log(val);
+  };
+  const updateTask = () => {
+    completeToDo(todoData);
+    todo.onChange(false);
   };
 
   return (
     <div className="edit-task">
       <input value={val} onChange={handleChange} />
-      <button type="submit">{<AiOutlineSave />}</button>
+      <button type="submit" onClick={updateTask}>
+        {<AiOutlineSave />}
+      </button>
     </div>
   );
 }

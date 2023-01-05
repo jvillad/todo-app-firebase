@@ -26,9 +26,17 @@ function CreateTask() {
   };
 
   return (
-    <div className="task">
-      <input type="text" onChange={handleUserTask} />
-      <button onClick={addToDb}>Add</button>
+    <div className="task-container">
+      <div className="input-and-btn">
+        <input
+          className="the-task"
+          placeholder="Enter to do here"
+          onChange={handleUserTask}
+        />
+        <button onClick={addToDb} className="add-btn">
+          +
+        </button>
+      </div>
       {tasks.map((task) => (
         <RenderTask
           key={task.id}

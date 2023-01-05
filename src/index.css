@@ -1,0 +1,91 @@
+:root {
+  --black: #0a0a0a;
+  --richblack: #011627;
+  --hotmag: #ff17e4;
+  --cream: #f1f7ed;
+  --yellow: #faa916;
+  --secondyellow: #ff9f1c;
+  --maroon: #b33951;
+  --red: #eb5160;
+  --grey: #f3f8f7;
+  --springreen: #04724d;
+  --blue: #042457;
+  --ghostwhite: #fdfffc;
+  --space: 'Space Mono', monospace;
+  --roboto: 'Roboto', sans-serif;
+  --poppins: 'Poppins', sans-serif;
+}
+
+body {
+  font-family: var(--roboto);
+}
+
+.App h1 {
+  text-align: center;
+  padding: 50px 0;
+}
+
+/* start of create task */
+.input-and-btn {
+  height: 150px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  background-color: var(--cream);
+  border-radius: 10px;
+}
+
+.the-task {
+  vertical-align: middle;
+  width: 500px;
+  height: 40px;
+  font-size: 18px;
+  border: 2px solid var(--blue);
+  padding-left: 10px;
+  border-radius: 5px;
+  font-family: var(--roboto);
+}
+
+.add-btn {
+  border-radius: 50%;
+  border: none;
+  color: var(--yellow);
+  font-size: 38px;
+  background-color: var(--secondblack);
+}
+
+.add-btn:hover {
+  cursor: pointer;
+}
+/* end of create task */
+
+.todo-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.todos {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--grey);
+  border-radius: 5px;
+}
+
+ul li {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 50px;
+  font-size: 32px;
+  list-style-type: none;
+  font-size: 20px;
+  line-height: 2;
+  padding-right: 20px;
+}
+
+div.task {
+  margin: 0 auto;
+  width: 700px;
+}

@@ -5,6 +5,7 @@ import { updateToDo } from '../helper/updateToDo';
 function EditTask(todo) {
   const [val, setVal] = useState(todo.task);
   const [todoData, setTodoData] = useState({});
+
   // to update the correct value of state variable
   useEffect(() => {
     setTodoData((prevState) => ({
@@ -30,8 +31,13 @@ function EditTask(todo) {
 
   return (
     <div className="edit-task">
-      <input value={val} onChange={handleChange} />
-      <button type="submit" onClick={updateTask}>
+      <input
+        className="edit-input"
+        value={val}
+        onChange={handleChange}
+        ref={todo.inputRef}
+      />
+      <button className="save-btn" type="submit" onClick={updateTask}>
         {<AiOutlineSave />}
       </button>
     </div>

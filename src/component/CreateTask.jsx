@@ -37,6 +37,9 @@ function CreateTask() {
           className="the-task"
           placeholder="Enter to do here"
           onChange={handleUserTask}
+          onKeyPress={(ev) => {
+            ev.key === 'Enter' && addToDb();
+          }}
         />
         <button onClick={addToDb} className="add-btn">
           +

@@ -3,6 +3,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../config/firebase';
 import RenderTask from './RenderTask';
 import { fetchTodos } from '../helper/fetchToDo';
+import Footer from './Footer';
 
 function CreateTask() {
   const [userTask, setUserTask] = useState('');
@@ -10,6 +11,10 @@ function CreateTask() {
 
   // Read todos from db
   const tasks = fetchTodos();
+  tasks.sort((a, b) => a.completed - b.completed);
+
+  // filter task that are not completed
+  const remainingTask = tasks.filter((task) => !task.completed);
 
   // Add new task to db
   const addToDb = async () => {
@@ -43,9 +48,10 @@ function CreateTask() {
           id={task.id}
           date={task.date}
           newTask={task.task}
-          status={task.status}
+          status={task.completed}
         />
       ))}
+      <Footer taskRemaining={remainingTask} />
     </div>
   );
 }

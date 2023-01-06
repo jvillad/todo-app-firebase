@@ -9,38 +9,64 @@ import EditTask from './EditTask';
 function Task(todos) {
   const [showComponent, setShowComponent] = useState(false);
   const [taskToEdit, setTaskToEdit] = useState('');
+  const taskDone = todos.status;
   const inputRef = useRef(null);
-  const deleteTask = () => {
-    removeToDo(todos.id);
-  };
-
-  const setTaskComplete = () => {
-    updateToDo(todos);
-  };
-
-  const onEdit = async () => {
-    setShowComponent(true);
-    const todoRef = doc(db, 'todos', todos.id);
-    const todoSnap = await getDoc(todoRef);
-    setTaskToEdit(todoSnap.data().task);
-  };
 
   useEffect(() => {
     showComponent && inputRef.current.focus();
   }, [showComponent]);
+
+  const getUpdatedDb = async () => {
+    const todoRef = doc(db, 'todos', todos.id);
+    return await getDoc(todoRef);
+  };
 
   return (
     <div className="todo-container">
       <ul className="todos">
         {!showComponent && (
           <li className="todo-task">
-            <input className="done" type="checkbox" onClick={setTaskComplete} />
-            <div className="task">{todos.newTask}</div>
-            <button className="delete" onClick={deleteTask}>
+            {!taskDone && (
+              <>
+                <input
+                  className="done"
+                  type="checkbox"
+                  onClick={async () => {
+                    updateToDo(todos);
+                  }}
+                />
+              </>
+            )}
+            <div
+              className="task"
+              style={{
+                textDecoration: taskDone ? 'line-through' : 'none',
+                color: taskDone && 'var(--darkgrey)',
+              }}
+            >
+              {todos.newTask}
+            </div>
+            {!taskDone && (
+              <>
+                <button
+                  className="edit"
+                  onClick={async () => {
+                    setShowComponent(true);
+                    const todoSnap = await getUpdatedDb();
+                    setTaskToEdit(todoSnap.data().task);
+                  }}
+                >
+                  {<AiOutlineEdit />}
+                </button>
+              </>
+            )}
+            <button
+              className="delete"
+              onClick={() => {
+                removeToDo(todos.id);
+              }}
+            >
               {<AiOutlineDelete />}
-            </button>
-            <button className="edit" onClick={onEdit}>
-              {<AiOutlineEdit />}
             </button>
           </li>
         )}

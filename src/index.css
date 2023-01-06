@@ -8,8 +8,8 @@
   --maroon: #b33951;
   --red: #eb5160;
   --grey: #f3f8f7;
-  --springreen: #04724d;
   --blue: #042457;
+  --darkgrey: #888;
   --ghostwhite: #fdfffc;
   --space: 'Space Mono', monospace;
   --roboto: 'Roboto', sans-serif;
@@ -24,7 +24,9 @@ body {
   text-align: center;
   padding: 50px 0;
 }
-
+button:hover {
+  cursor: pointer;
+}
 /* start of create task */
 .input-and-btn {
   height: 150px;
@@ -62,6 +64,7 @@ body {
 }
 /* end of create task */
 
+/* start of render task */
 .todo-container {
   max-width: 900px;
   margin: 0 auto;
@@ -76,9 +79,7 @@ body {
 
 ul li {
   display: flex;
-  justify-content: flex-end;
-  column-gap: 50px;
-  font-size: 32px;
+  column-gap: 30px;
   list-style-type: none;
   font-size: 20px;
   line-height: 2;
@@ -89,3 +90,94 @@ div.task {
   margin: 0 auto;
   width: 700px;
 }
+
+input.done {
+  margin-top: 10px;
+  height: 20px;
+  border-radius: 50%;
+  appearance: none;
+  background-color: #fafafa;
+  border: 2px solid var(--yellow);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
+    inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+  padding: 9px;
+}
+input.done:active,
+input.done:checked:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
+    inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input.done:checked {
+  background-color: var(--yellow);
+  border: 2px solid var(--secondyellow);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
+    inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05),
+    inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+}
+
+button.delete {
+  color: var(--red);
+  font-size: 24px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--grey);
+}
+
+button.edit {
+  color: var(--yellow);
+  font-size: 24px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--grey);
+}
+
+/* end of render task */
+
+/* start of edit task */
+
+.edit-task {
+  display: flex;
+  gap: 60px;
+  margin: 0 auto;
+  width: 700px;
+  align-items: center;
+  padding-right: 30px;
+}
+
+input.edit-input {
+  width: 600px;
+  font-size: 20px;
+  line-height: 2;
+}
+
+button.save-btn {
+  padding-top: 5px;
+  border: none;
+  font-size: 30px;
+  background-color: var(--cream);
+  color: var(--yellow);
+}
+/* end of edit task */
+
+/* start of footer */
+.footer-container {
+  padding-top: 150px;
+}
+
+.footer {
+  background-color: var(--cream);
+  padding: 10px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.footer p {
+  margin: 0;
+}
+p span {
+  color: var(--maroon);
+  font-weight: bold;
+  font-size: 16px;
+}
+/* end of fotter */

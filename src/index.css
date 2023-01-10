@@ -9,6 +9,7 @@
   --red: #eb5160;
   --grey: #f3f8f7;
   --blue: #042457;
+  --opal: #f19190;
   --darkgrey: #888;
   --ghostwhite: #fdfffc;
   --space: 'Space Mono', monospace;
@@ -18,6 +19,8 @@
 
 body {
   font-family: var(--roboto);
+  margin: 0;
+  padding: 0;
 }
 
 .App h1 {
@@ -27,6 +30,41 @@ body {
 button:hover {
   cursor: pointer;
 }
+
+/* start of nav */
+.nav-container {
+  background-color: var(--cream);
+}
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.nav ul {
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 0;
+}
+img.user-img {
+  display: flex;
+  vertical-align: middle;
+  border-radius: 50%;
+  max-width: 50%;
+}
+.logoff-btn {
+  display: flex;
+  vertical-align: middle;
+}
+
+.logoff-btn button {
+  border: none;
+  background-color: var(--cream);
+  color: var(--richblack);
+  font-size: 20px;
+  text-decoration: underline;
+}
+/* end of nav */
+
 /* start of create task */
 .input-and-btn {
   height: 150px;

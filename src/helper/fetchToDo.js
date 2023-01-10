@@ -22,7 +22,7 @@ export const fetchTodos = () => {
     const dbQuery = query(
       todosDb,
       orderBy('date'),
-      where('owner', '==', user.uid)
+      where('owner', '==', user.email)
     );
     const unsub = onSnapshot(dbQuery, (querySnapshot) => {
       const todos = [];

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../config/firebase';
+import { db, auth } from '../config/firebase';
 import RenderTask from './RenderTask';
 import { fetchTodos } from '../helper/fetchToDo';
 import Footer from './Footer';
@@ -22,6 +22,7 @@ function CreateTask() {
       date: Date.now(),
       task: userTask,
       completed: false,
+      owner: auth.currentUser.email,
     });
   };
 
@@ -32,6 +33,7 @@ function CreateTask() {
 
   return (
     <div className="task-container">
+      <h1>Hi 👋🏼 {auth.currentUser.displayName}</h1>
       <div className="input-and-btn">
         <input
           className="the-task"
@@ -45,6 +47,7 @@ function CreateTask() {
           +
         </button>
       </div>
+
       {tasks.map((task) => (
         <RenderTask
           key={task.id}
@@ -54,6 +57,7 @@ function CreateTask() {
           status={task.completed}
         />
       ))}
+
       <Footer taskRemaining={remainingTask} />
     </div>
   );

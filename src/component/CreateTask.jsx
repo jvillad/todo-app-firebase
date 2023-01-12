@@ -17,18 +17,15 @@ function CreateTask() {
   const remainingTask = tasks.filter((task) => !task.completed);
 
   // Add new task to db
+  const taskToDb = userTask;
   const addToDb = async () => {
+    setUserTask('');
     await addDoc(todosDb, {
       date: Date.now(),
-      task: userTask,
+      task: taskToDb,
       completed: false,
       owner: auth.currentUser.email,
     });
-  };
-
-  // Store user task to state variable
-  const handleUserTask = (ev) => {
-    setUserTask(ev.target.value);
   };
 
   return (
@@ -38,7 +35,10 @@ function CreateTask() {
         <input
           className="the-task"
           placeholder="Enter to do here"
-          onChange={handleUserTask}
+          value={userTask}
+          onChange={(ev) => {
+            setUserTask(ev.target.value);
+          }}
           onKeyPress={(ev) => {
             ev.key === 'Enter' && addToDb();
           }}
@@ -47,7 +47,6 @@ function CreateTask() {
           +
         </button>
       </div>
-
       {tasks.map((task) => (
         <RenderTask
           key={task.id}

@@ -1,22 +1,26 @@
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useContext } from 'react';
 import { auth } from '../config/firebase';
 import { Link } from 'react-router-dom';
+import { DataContext } from '../context/DataContext';
 
 function Nav() {
-  const [user, loading] = useAuthState(auth);
-  if (loading) {
-    return <> </>;
-  }
-  if (!user) {
+  const loggedIn = useContext(DataContext);
+
+  if (!loggedIn) {
     return <></>;
   }
+
   return (
     <section className="nav-container">
       <div className="nav">
         <ul>
           <li>
             <Link href="/dashboard">
-              <img src={user.photoURL} alt="user avatar" className="user-img" />
+              <img
+                src={loggedIn.photoURL}
+                alt="user avatar"
+                className="user-img"
+              />
             </Link>
           </li>
 

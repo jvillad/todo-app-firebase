@@ -1,13 +1,14 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { FcGoogle } from 'react-icons/fc';
 import { auth } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+import { DataContext } from '../context/DataContext';
 
 function Login() {
   const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
-  const [user, loading] = useAuthState(auth);
+  const loggedIn = useContext(DataContext);
   const googleLogin = async () => {
     try {
       // eslint-disable-next-line no-unused-vars
@@ -18,8 +19,10 @@ function Login() {
       console.log(error);
     }
   };
-  if (loading) return;
-  if (user) navigate('/todo');
+  useEffect(() => {
+    if (loggedIn) navigate('/todo');
+  }, []);
+
   return (
     <div className="login-container">
       <h2>Be productive today!</h2>

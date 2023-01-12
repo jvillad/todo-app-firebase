@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../config/firebase';
 export const DataContext = createContext();

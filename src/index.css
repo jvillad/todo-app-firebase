@@ -113,6 +113,7 @@ img.user-img {
   flex-direction: column;
   background-color: var(--grey);
   border-radius: 5px;
+  color: #404040;
 }
 
 ul li {
@@ -219,3 +220,44 @@ p span {
   font-size: 16px;
 }
 /* end of fotter */
+.login-intro {
+  font-size: 24px;
+}
+
+.login-wrapper {
+  display: grid;
+  place-items: center;
+  padding: 25px;
+  padding: 25px;
+  color: var(--darkgrey);
+  background-color: var(--cream);
+  width: 300px;
+  border-radius: 10px;
+  height: 150px;
+  max-height: 100%;
+}
+
+.login-container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.btn-wrapper {
+  display: grid;
+  place-content: center;
+}
+
+.btn-login {
+  display: flex;
+  font-size: 16px;
+  align-items: center;
+  color: var(--richblack);
+  gap: 10px;
+  padding: 10px 25px;
+  border-radius: 10px;
+}
+
+.user {
+  color: var(--maroon);
+}

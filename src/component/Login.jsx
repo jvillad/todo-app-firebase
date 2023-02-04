@@ -25,10 +25,14 @@ function Login() {
 
   return (
     <div className="login-container">
-      <h2>Be productive today!</h2>
-      <button onClick={googleLogin}>
-        <FcGoogle /> Sign in with Google
-      </button>
+      <div className="login-wrapper">
+        <div className="login-intro">Be productive today! 📝</div>
+        <div className="btn-wrapper">
+          <button onClick={googleLogin} className="btn-login">
+            <FcGoogle /> Sign in with Google
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

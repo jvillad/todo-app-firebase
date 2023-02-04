@@ -30,7 +30,9 @@ function CreateTask() {
 
   return (
     <div className="task-container">
-      <h1>Hi 👋🏼 {auth.currentUser.displayName}</h1>
+      <h1>
+        Hi 👋🏼 <span className="user">{auth.currentUser.displayName}</span>
+      </h1>
       <div className="input-and-btn">
         <input
           className="the-task"

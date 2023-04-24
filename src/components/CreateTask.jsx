@@ -3,6 +3,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import { db, auth } from '../config/firebase';
 import RenderTask from './RenderTask';
 import { fetchTodos } from '../helper/fetchToDo';
+import Header from './Header';
 import Footer from './Footer';
 
 function CreateTask() {
@@ -29,37 +30,38 @@ function CreateTask() {
   };
 
   return (
-    <div className="task-container">
-      <h1>
-        Hi 👋🏼 <span className="user">{auth.currentUser.displayName}</span>
-      </h1>
-      <div className="input-and-btn">
-        <input
-          className="the-task"
-          placeholder="Enter to do here"
-          value={userTask}
-          onChange={(ev) => {
-            setUserTask(ev.target.value);
-          }}
-          onKeyPress={(ev) => {
-            ev.key === 'Enter' && addToDb();
-          }}
-        />
-        <button onClick={addToDb} className="add-btn">
-          +
-        </button>
+    <div>
+      <div className="text-stone-700 h-screen">
+        <Header taskRemaining={remainingTask} />
+        <div className="task-container">
+          <div className="h-[80px] max-w-[1200px] mx-auto flex justify-center items-center gap-[15px] bg-gray-100 rounded-xl mb-4">
+            <input
+              className="the-task"
+              placeholder="Enter to do here"
+              value={userTask}
+              onChange={(ev) => {
+                setUserTask(ev.target.value);
+              }}
+              onKeyDown={(ev) => {
+                ev.key === 'Enter' && addToDb();
+              }}
+            />
+            <button onClick={addToDb} className="add-btn">
+              +
+            </button>
+          </div>
+          {tasks.map((task) => (
+            <RenderTask
+              key={task.id}
+              id={task.id}
+              date={task.date}
+              newTask={task.task}
+              status={task.completed}
+            />
+          ))}
+        </div>
       </div>
-      {tasks.map((task) => (
-        <RenderTask
-          key={task.id}
-          id={task.id}
-          date={task.date}
-          newTask={task.task}
-          status={task.completed}
-        />
-      ))}
-
-      <Footer taskRemaining={remainingTask} />
+      <Footer />
     </div>
   );
 }

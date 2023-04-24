@@ -1,8 +1,8 @@
-import CreateTask from './component/CreateTask';
+import CreateTask from './components/CreateTask';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './component/Login';
+import Login from './components/Login';
 import PrivateRoute from './config/PrivateRoute';
-import NotFound from './component/NotFound';
+import NotFound from './components/NotFound';
 import { DataProvider } from './context/DataContext';
 
 import Nav from './nav/Nav';
@@ -10,7 +10,7 @@ import Nav from './nav/Nav';
 function App() {
   return (
     <DataProvider>
-      <div className="App">
+      <div className="">
         <BrowserRouter>
           <Nav />
           <Routes>

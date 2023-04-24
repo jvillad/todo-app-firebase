@@ -4,8 +4,7 @@ import Login from './components/Login';
 import PrivateRoute from './config/PrivateRoute';
 import NotFound from './components/NotFound';
 import { DataProvider } from './context/DataContext';
-
-import Nav from './nav/Nav';
+import Nav from './components/Nav';
 
 function App() {
   return (

@@ -34,52 +34,17 @@ button:hover {
 }
 
 /* start of nav */
-.nav-container {
-  background-color: var(--cream);
-}
-.nav {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.nav ul {
-  margin: 0;
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px 0;
-}
+
 img.user-img {
   display: flex;
   vertical-align: middle;
   border-radius: 50%;
   max-width: 50%;
 }
-.logoff-btn {
-  display: flex;
-  vertical-align: middle;
-}
 
-.logoff-btn button {
-  border: none;
-  background-color: var(--cream);
-  color: var(--richblack);
-  font-size: 20px;
-  text-decoration: underline;
-}
 /* end of nav */
 
 /* start of create task */
-.input-and-btn {
-  height: 150px;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  background-color: var(--cream);
-  border-radius: 10px;
-}
-
 .the-task {
   vertical-align: middle;
   width: 500px;
@@ -113,7 +78,7 @@ img.user-img {
 .todos {
   display: flex;
   flex-direction: column;
-  background-color: var(--grey);
+
   border-radius: 5px;
   color: #404040;
 }
@@ -162,7 +127,6 @@ button.delete {
   font-size: 24px;
   border-radius: 10px;
   border: none;
-  background-color: var(--grey);
 }
 
 button.edit {
@@ -170,7 +134,6 @@ button.edit {
   font-size: 24px;
   border-radius: 10px;
   border: none;
-  background-color: var(--grey);
 }
 
 /* end of render task */
@@ -196,7 +159,6 @@ button.save-btn {
   padding-top: 5px;
   border: none;
   font-size: 30px;
-  background-color: var(--cream);
   color: var(--yellow);
 }
 /* end of edit task */
@@ -207,7 +169,6 @@ button.save-btn {
 }
 
 .footer {
-  background-color: var(--cream);
   padding: 10px 0;
   max-width: 1200px;
   margin: 0 auto;
@@ -222,42 +183,10 @@ p span {
   font-size: 16px;
 }
 /* end of fotter */
-.login-intro {
-  font-size: 24px;
-}
-
-.login-wrapper {
-  display: grid;
-  place-items: center;
-  padding: 25px;
-  padding: 25px;
-  color: var(--darkgrey);
-  background-color: var(--cream);
-  width: 300px;
-  border-radius: 10px;
-  height: 150px;
-  max-height: 100%;
-}
-
-.login-container {
-  display: grid;
-  place-items: center;
-  height: 100vh;
-}
 
 .btn-wrapper {
   display: grid;
   place-content: center;
-}
-
-.btn-login {
-  display: flex;
-  font-size: 16px;
-  align-items: center;
-  color: var(--richblack);
-  gap: 10px;
-  padding: 10px 25px;
-  border-radius: 10px;
 }
 
 .user {

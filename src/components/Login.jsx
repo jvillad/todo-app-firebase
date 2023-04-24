@@ -26,9 +26,13 @@ function Login() {
     <div className="bg-body-gradient h-screen flex justify-center items-center">
       <div className="container lg:max-w-screen-lg mx-auto  py-10">
         <div>
-          <h1 className="text-stone-800 font-bolder text-[60px] text-center mb-4">
-            Be productive today!
+          <h1 className="text-pink-700 font-bold text-[60px] text-center mb-4">
+            BE PRODUCTIVE
+            <span className="font-bolder text-white text-[50px] block">
+              using this simple todo app!
+            </span>
           </h1>
+
           <div className="flex justify-center">
             <button
               onClick={googleLogin}

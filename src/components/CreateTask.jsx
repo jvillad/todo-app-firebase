@@ -20,6 +20,7 @@ function CreateTask() {
   // Add new task to db
   const taskToDb = userTask;
   const addToDb = async () => {
+    if (userTask.trim() === '') return;
     setUserTask('');
     await addDoc(todosDb, {
       date: Date.now(),

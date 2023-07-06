@@ -14,5 +14,9 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', 'prettier'],
-  rules: { 'react/react-in-jsx-scope': 'off', 'no-unused-vars': 'warn' },
+  rules: {
+    'react/react-in-jsx-scope': 'off',
+    'no-unused-vars': 'warn',
+    'prettier/prettier': ['off', { singleQuote: true }],
+  },
 };
